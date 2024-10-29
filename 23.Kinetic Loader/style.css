@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box; margin: 0; padding: 0;
+  }
+  
+  body {/*가운데 정렬*/
+    background-color: salmon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .kinetic {/*디브박스*/
+    position: relative;
+    height: 80px;
+    width: 80px;
+  }
+  
+  .kinetic::after,
+  .kinetic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 50px solid transparent; 
+    /*기본적으로 사각형을 만듦 width height가 0이기에 보이는 부분은 없음 삼각형의 크기를 정함*/
+    border-bottom-color: #fff;/*삼각형의 색상*/
+    animation: rotateA 2s linear infinite 0.5s; /*시작전 0.5초 대기 애니메이션 2초간 실행 무한반복*/
+  }
+  /*width 0 height 0 설정하면 사각형이 아닌 점처럼 취급*/
+  
+  .kinetic::before {
+    transform: rotate(90deg);
+    animation: rotateB 2s linear infinite;
+    /*2초간 애니메이션 무한반복*/
+    border-bottom-color: crimson /*삼각형 B 색상*/
+  }
+  
+  @keyframes rotateA {/*회전 A애니메이션 3번에 걸쳐서 단계별로 진행*/
+    0%,
+    25% {/*0-25% 회전 0도*/
+      transform: rotate(0deg);
+    }
+  
+    50%,
+    75% {/*50-75% 회전 180도*/
+      transform: rotate(180deg);
+    }
+  
+    100% {/*100% 회전 360*/
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes rotateB {/*회전 B 애니메이션 A를 따라가는*/
+    0%,
+    25% {
+      transform: rotate(90deg);
+    }
+  
+    50%,
+    75% {
+      transform: rotate(270deg);
+    }
+  
+    100% {
+      transform: rotate(450deg);
+    }
+  }

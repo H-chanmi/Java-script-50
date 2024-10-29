@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션 네비게이션</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- nav가 활성 상태임을 미리 활성상태임을 표시 -->
+    <nav class="active" id="nav">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Works</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <button class="icon" id="toggle">
+          <div class="line line1"></div>
+          <div class="line line2"></div>
+        </button>
+      </nav>
+      <script src="script.js"></script>
+  
+      <!-- Dribbble link: https://dribbble.com/shots/2427219-Header-Navigation-Day-053-dailyui -->
+</body>
+</html>
+<!-- .active는 Css클래스 이름으로 일반적으로는 특정 요소가 현재 활성 상태임을 나타내는데 사용되는데
+
+이번에는 이 요소를 클래스로 html에 적용시켜
+해당 요소가 계속 활성 상태를 나타내고 있음
+-->

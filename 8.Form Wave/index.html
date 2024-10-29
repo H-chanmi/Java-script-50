@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Form Input Wave</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Please Login</h1>
+      <form>
+        <div class="form-control">
+          <input type="text" required> 
+          <!-- 사용자가 이메일을 입력할 수 있는 텍스트 입력란 require 속성을 사용해 필수 입력필드임을 나타냄-->
+          <label>Email</label>
+
+
+          <!-- <label> 문자열간 딜레이시간을 보여주기 위한것 없어도 됨
+            <span style="transition-delay: 0ms">E</span>
+              <span style="transition-delay: 50ms">m</span>
+              <span style="transition-delay: 100ms">a</span>
+              <span style="transition-delay: 150ms">i</span>
+              <span style="transition-delay: 200ms">l</span>
+        </label> -->
+        
+        </div>
+
+        <div class="form-control">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+
+        <button class="btn">Login</button>
+
+        <p class="text">Don't have an account? <a href="#">Register</a> </p>
+      </form>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
+
+<!--
+js->따로 복붙하세요
+
+const labels = document.querySelectorAll('.form-control label')
+//상수 식별자 labels는 .form-contrl label을 가져옴(email,password)
+
+labels.forEach(label => {
+    label.innerHTML = label.innerText
+        .split('')
+        .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
+        .join('')
+})
+
+labels는 각각의 label에 대해 해당 내용을 반복실행
+laber.innerHTML은 label.innerText가 가져온 텍스트 내용을 가지고 HTML을 설정
+
+label.innerText 레이블의 텍스트 콘텐츠를 가저옴(email,password)의 콘텐츠를 가져옴
+
+.split('')=>텍스트를 개별 문자로 분리하여 배열로 만듦
+('e', 'm', 'a', 'i', 'l')이런 식으로 
+
+.map((letter(=각 문자), idx) =>...)
+map함수를 통해 각 문자(letter)를 <span>태그로 감싸는 작업을 함 idx는 각 문자의 인덱스를 나타내어 각 문자에 다르게 애니메이션 딜레이를 줄수 있음
+
+<span style="transition-delay:${idx * 50}ms">${letter}</span>
+각 문자를 <span>태그로 감싸고, transition-delay 속성을 사용해 인덱스에 따라 50ms씩 지연 시간을 다르게 적용함
+
+.join('')
+분리된 문자들을 다시 하나의 문자열로 함칩
+('e', 'm', 'a', 'i', 'l')=>('email') 단 각 문자가 span으로 감싸진 상태의 HTML문자열이 만들어짐=>innerHTML에 넣어 레이블 텍스트를 대체
+-->

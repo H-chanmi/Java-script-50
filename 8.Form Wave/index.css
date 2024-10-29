@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* 폰트연결 */
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+
+body {
+  background-color: steelblue;
+  color: #fff;
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  flex-direction: column; /*기본 가로정렬에서 세로정렬로 바꿈*/
+  align-items: center;
+  justify-content: center;
+ /* 가로세로 수평중앙 정렬 */
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
+  border-radius: 5px;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.container a {
+  text-decoration: none;
+  color: lightblue;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  /* 블록 요소의 특징 유지,다른요소와 함께 배치 가능,자동줄바꿈,높이넓이 설정가능 */
+  width: 100%;
+  background: lightblue;
+  padding: 15px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.btn:focus {
+    /* 사용자가 마우스로 클릭하거나 키보드로 탭하여 해당 요소에 포커스가 맞춰질대 발생 ->해당 스타일 지정*/
+  outline: 0;
+  /* =outline:none; 기본적으로 웹에서 지원하는 아웃라인 효과 제거 (아웃라인은 기본 실선이나 점선의 형태로 경계선으로 나타내져 있음)*/
+}
+
+.btn:active {
+  transform: scale(0.98);
+  /* 요소를 클릭하거나 누르고 있을때 적용되는 가상클래스 */
+}
+
+.text {
+  margin-top: 30px;
+}
+
+.form-control { /*이메일과 패스워드를 각각을 감싸고 있는 .div임*/
+  position: relative;
+  margin: 20px 0 40px;
+  width: 300px;
+}
+
+.form-control input {/*입력창*/
+  background-color: transparent;/*투명*/
+  border: none;
+  border-bottom: 2px #fff solid;
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+  outline: 0;
+  border-bottom-color: lightblue;
+}
+/* :valid는 유효한 값이 입력되었을때 적용하는 가상 클래스 */
+
+.form-control label { /*Email,Password텍스트*/
+  position: absolute;
+  top: 15px;
+  left: 0;
+}
+
+/* 개별 문자 단위로 스타일링 하고, 애니메이션 효과를 적용하기 위해 사용 => 개별적으로 애니메이션이 적용되도록 만들어짐 
+js에서 각 문자를 분리후 span으로 묶으면 해당 css가 적용됨
+*/
+
+.form-control label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+  color: lightblue;
+  transform: translateY(-30px);
+}

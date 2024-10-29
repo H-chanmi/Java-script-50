@@ -1,0 +1,115 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {/*전체를 그라데이션으로 배경색을 줌*/
+  background-color: #eafbff;
+  background-image: linear-gradient(
+    to bottom,
+    #eafbff 0%,
+    #eafbff 50%,
+    #5290f9 50%,
+    #5290f9 100%
+  );
+  font-family: 'Muli', sans-serif;
+  display: flex;/*하위 요소 가운데정렬을 위한 flex*/
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+nav {/*ul을 담고 있는 네비박스*/
+  background-color: #fff;
+  padding: 20px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: width 0.6s linear;
+  /*전환효과가 적용될 속성을 지정 =>너비*/
+  overflow-x: hidden;/*가로만 숨김*/
+}
+
+nav.active { /*내비가 활성화 되면*/
+  width: 350px;
+}
+
+nav ul {/*기본ul ->*/
+  display: flex;/*li가로 정렬*/
+  list-style-type: none;/*리스트 스타일 삭제*/
+  padding: 0;
+  margin: 0;
+  width: 0;
+  transition: width 0.6s linear;
+}
+
+nav.active ul { /*네비가 활성화 되면 ul은*/
+  width: 100%;
+}
+
+nav ul li {
+  transform: rotateY(0deg);
+  opacity: 0;/*li내용 안보이게*/
+  transition: transform 0.6s linear, opacity 0.6s linear;
+  /*0.6초동안 두전환 모두 일정한 속도로 진행됨(opacity,transform(=여기서는 Rotate))*/
+}
+
+nav.active ul li { /*네비가 활성화 되면 li은*/
+  opacity: 1;
+  transform: rotateY(360deg);
+}
+
+nav ul a {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.icon {/*div를 담고 있는 button*/
+  background-color: #fff;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  height: 30px;
+  width: 30px;
+}
+
+.icon:focus {/*포커스가 잡히면*/
+  outline: 0;/*웹에서 자동적용되는 outline제거*/
+}
+
+.icon .line {/*버튼안 디브박스(=) 공통*/
+  background-color: #5290f9;
+  height: 2px;
+  width: 20px;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  transition: transform 0.6s linear;
+}
+
+.icon .line2 {/*=의 아래쪽 작대기*/
+  top: auto;
+  /*
+  1.중앙 정렬 유지
+  2.유연성!!=>레이아웃이 변경되더라도 상호작용으로 자동조절,동적관리
+  3.기본정렬효과
+  */
+  bottom: 10px;
+}
+
+nav.active .icon .line1 {/*네비가 활성화 되면  X의(=/)부분*/
+  transform: rotate(-765deg) translateY(5.5px);
+}
+
+nav.active .icon .line2 {/*X의(=\)부분*/
+  transform: rotate(765deg) translateY(-5.5px);
+}
